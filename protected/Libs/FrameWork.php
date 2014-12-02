@@ -23,11 +23,16 @@ class FrameWork extends \Slim\Slim
 		$app->setModes();
 		$app->setLog();
 		
-		R::set('theme', 'default');
-		$app->config('templates.path', THEMES_DIR. R::get('theme').DS.'templates');
+		$app->config('templates.path', $app->templatePath());
 		$app->loadTwigExtensions();
 		$app->loadRouters();
 		return $app;
+	}
+
+	public function templatePath()
+	{
+		R::set('theme', 'default');
+		return THEMES_DIR. R::get('theme').DS.'templates';
 	}
 
 	public static function setModuleAutoloadDirs()
@@ -151,5 +156,22 @@ class FrameWork extends \Slim\Slim
 	public function setTemplatesDirectory($directory)
     {
     	$this->view->setTemplatesDirectory($directory);
+    }
+
+    public function renderFetch($template, $date=array())
+    {
+    	return $this->view->fetch($template, $data);
+    }
+
+    public function renderCrumb($templatesPath, $template, $data=array())
+    {
+    	$this->container->singleton('viewCrumb', function ($c) {
+    		$view = new \Slim\Views\Twig;
+            return $view;
+        });
+        
+        $view = $this->viewCrumb;
+        $view->setTemplatesDirectory($templatesPath);
+        return $view->fetch($template, $data);
     }
 }

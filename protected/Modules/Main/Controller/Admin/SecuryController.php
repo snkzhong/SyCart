@@ -1,6 +1,10 @@
 <?php
 
-class Admin_SecuryController extends BaseController
+namespace Main\Controller\Admin;
+
+use Main\Controller\Base;
+
+class SecuryController extends Base
 {
 	public function login()
 	{

@@ -19,6 +19,7 @@ class User extends Base
 		$entity = BaseModel::model('slimblog')->findOne('id = ?', 1, 'users');
 
 		$data['entity'] = $entity;
+		$data['slider'] = sapp()->renderCrumb(dirname(__DIR__).DS.'View', 'test.html',array('name'=>'hello'));
 		$this->render('index.html', $data);
 	}
 }

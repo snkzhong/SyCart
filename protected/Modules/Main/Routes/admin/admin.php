@@ -3,7 +3,7 @@
 sapp()->group('/admin', function(){
 
 	sapp()->get('/login', function(){
-		wrapObj(new Admin_SecuryController)->login();
+		wrapObj(new \Main\Controller\Admin\SecuryController)->login();
 	})->name('admin_login');
 
 
