@@ -1,3 +1,3 @@
 .svn
 .git
-vendor
+vendor/vendor/*

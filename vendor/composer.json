@@ -1,0 +1,23 @@
+{
+    "name": "snkzhong/slim-test",
+    "require-dev": {
+        "slim/slim": "dev-master",
+        "slim/views": "*",
+        "twig/twig": "*",
+        "twig/extensions": "*",
+        "gabordemooij/redbean": "3.5.1",
+        "respect/validation": "dev-master",
+        "symfony/filesystem": "dev-master",
+        "symfony/finder": "dev-master",
+        "sonata-project/cache": "dev-master",
+        "zendframework/zend-stdlib": "dev-master",
+        "zendframework/zend-session": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "zhongqin",
+            "email": "snkzhong@gmail.com"
+        }
+    ],
+    "require": {}
+}
