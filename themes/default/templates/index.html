@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p>
+hello : {{ name }}
+</p>
+
+{{ config('app.version') }}
+<br />
+
+{{ entity.username }} : < {{ entity.email }} >
+
+{% endblock %}
