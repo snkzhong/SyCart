@@ -15,7 +15,12 @@ function twig_filter_fuck($arg)
 	return 'fuck ' . $arg;
 }
 
-function twig_func_themeasset($file)
+function twig_func_assets($file)
 {
-	return 'themes'.DS.R::get('theme').DS.$file;
+	return basePath().'assets'.DS.$file;
+}
+
+function twig_func_themeassets($file)
+{
+	return basePath().'themes'.DS.R::get('theme').DS.$file;
 }

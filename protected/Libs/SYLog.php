@@ -1,6 +1,6 @@
 <?php
 
-class MyLog extends \Slim\Log
+class SYLog extends \Slim\Log
 {
 	public function log($level, $object, $context = array())
     {

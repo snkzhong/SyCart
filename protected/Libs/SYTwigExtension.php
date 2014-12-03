@@ -1,6 +1,6 @@
 <?php
 
-class MyTwigExtension extends \Twig_Extension
+class SYTwigExtension extends \Twig_Extension
 {
 	public function getName()
     {

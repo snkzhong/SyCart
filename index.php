@@ -6,7 +6,8 @@ define("CONFIG_DIR", ROOT.'config'.DS);
 define("VENDOR_DIR", ROOT . "vendor" . DS . 'vendor' . DS);
 define('MODULE_DIR', ROOT . "protected" . DS . 'Modules' . DS);
 define('PROTECTED_DIR', ROOT . "protected" . DS);
-define('LOG_DIR', PROTECTED_DIR.'Logs'.DS);
+define('VAR_DIR', PROTECTED_DIR.'Var'.DS);
+define('LOG_DIR', VAR_DIR.'Logs'.DS);
 
 define("THEMES_DIR", ROOT  . "themes" . DS);
 

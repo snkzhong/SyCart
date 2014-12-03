@@ -6,6 +6,7 @@ use RedBean_Facade as R;
 
 class BaseModel
 {
+	protected $table;
 	protected $dbSource = 'default';
 
 	public static function model($source='default', $className=null)
@@ -51,14 +52,21 @@ class BaseModel
 		return $theTable;
 	}
 
+	public static function getSql()
+	{
+		return R::$adapter->getSql();
+	}
+
 	public function insert($kvs=array(), $table='')
 	{
-
-		$entity = R::dispense($this->getTable($table));
-		foreach ($kvs as $key => $value) {
-			$entity[$key] = $value;
+		$table = $this->getTable($table);
+		$sql = "INSERT INTO `".$table."`";
+		if ($kvs) {
+			$sql.= "(".implode(',', array_keys($kvs)).") ";
+			$sql.= "VALUES('".implode("','", array_values($kvs))."')";
 		}
-		return R::store( $entity );
+		R::exec($sql);
+		return R::$adapter->getInsertID();
 	}
 
 	public function update($kvs=array(), $where=null, $table='')
@@ -81,38 +89,39 @@ class BaseModel
 		list($whereConf, $params) = $this->buildWhereConf($where);
 
 		$sql = "DELETE FROM `".$this->getTable($table)."` WHERE ".$whereConf;
+		echo $sql;
 		R::exec($sql, $params);
 	}
 
-	public function find($where='1', $params=array(), $table='')
-	{
-		if (!is_array($params)) {
-			$params = (array)$params;
-		}
+	// public function find($where='1', $params=array(), $table='')
+	// {
+	// 	if (!is_array($params)) {
+	// 		$params = (array)$params;
+	// 	}
 
-		$rs = R::find($this->getTable($table), $where, $params);
-		return $rs ? $rs : array();
-	}
+	// 	$rs = R::find($this->getTable($table), $where, $params);
+	// 	return $rs ? $rs : array();
+	// }
 
-	public function findOne($where='1', $params=array(), $table='')
-	{
-		if (!is_array($params)) {
-			$params = (array)$params;
-		}
+	// public function findOne($where='1', $params=array(), $table='')
+	// {
+	// 	if (!is_array($params)) {
+	// 		$params = (array)$params;
+	// 	}
 
-		$rs = R::findOne($this->getTable($table), $where, $params);
-		return $rs ? $rs : array();
-	}
+	// 	$rs = R::findOne($this->getTable($table), $where, $params);
+	// 	return $rs ? $rs : array();
+	// }
 
-	public function findAll($where='1', $params=array(), $table='')
-	{
-		if (!is_array($params)) {
-			$params = (array)$params;
-		}
+	// public function findAll($where='1', $params=array(), $table='')
+	// {
+	// 	if (!is_array($params)) {
+	// 		$params = (array)$params;
+	// 	}
 		
-		$rs = R::findAll($this->getTable($table), $where, $params);
-		return $rs ? $rs : array();
-	}
+	// 	$rs = R::findAll($this->getTable($table), $where, $params);
+	// 	return $rs ? $rs : array();
+	// }
 
 	public function getRow($where=null, $table='')
 	{

@@ -2,6 +2,11 @@
 
 use Symfony\Component\Finder\Finder;
 
+function basePath()
+{
+    return rtrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', ROOT), DS).DS;
+}
+
 function detectMode($maps)
 {
     $currentMachine = gethostname();

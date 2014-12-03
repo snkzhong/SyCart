@@ -5,13 +5,13 @@ return array(
 		'host'		=> 'localhost',
 		'user'		=> 'root',
 		'password'	=> 'root',
-		'dbname'	=> 'slimtest'
+		'dbname'	=> 'sycart'
 	),
 
 	'slimblog'	=> array(
 		'host'		=> 'localhost',
 		'user'		=> 'root',
 		'password'	=> 'root',
-		'dbname'	=> 'slimblog'
+		'dbname'	=> 'sycart'
 	),
 );

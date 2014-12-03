@@ -1,3 +1,5 @@
 .svn
 .git
 vendor/vendor/*
+protected/var/*
+assets/*

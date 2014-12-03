@@ -16,9 +16,9 @@ class User extends Base
 		//UserModel::deleteById(2);
 		// print_r(UserModel::row());
 
-		$entity = BaseModel::model('slimblog')->findOne('id = ?', 1, 'users');
-
-		$data['entity'] = $entity;
+		\Main\Model\CategoryModel::create(1);
+		//\Main\Model\CategoryModel::remove(32);
+		
 		$data['slider'] = sapp()->renderCrumb(dirname(__DIR__).DS.'View', 'test.html',array('name'=>'hello'));
 		$this->render('index.html', $data);
 	}

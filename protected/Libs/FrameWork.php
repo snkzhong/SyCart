@@ -31,8 +31,8 @@ class FrameWork extends \Slim\Slim
 
 	public function templatePath()
 	{
-		R::set('theme', 'default');
-		return THEMES_DIR. R::get('theme').DS.'templates';
+		R::set('theme', 'admin');
+		return THEMES_DIR. R::get('theme').DS.'templates'.DS;
 	}
 
 	public static function setModuleAutoloadDirs()
@@ -123,7 +123,7 @@ class FrameWork extends \Slim\Slim
 
 		$this->view->parserExtensions = array(
 			new \Slim\Views\TwigExtension(),
-			new MyTwigExtension(),
+			new SYTwigExtension(),
 			new Twig_Extension_StringLoader()
 		);
 	}
